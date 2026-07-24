@@ -1,7 +1,3 @@
-$themePath = "$HOME/.poshthemes/fallout4.omp.json"
-if (!(Test-Path (Split-Path $themePath))) { New-Item -Type Directory -Force -Path (Split-Path $themePath) }
-
-$json = @'
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
@@ -166,7 +162,7 @@ $json = @'
         {
           "background": "#0057b7",
           "foreground": "#ffd700",
-          "powerline_symbol": "\ue0c4",
+            "powerline_symbol": "\ue0c4",
           "style": "powerline",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os"
@@ -210,8 +206,3 @@ $json = @'
   "final_space": true,
   "version": 4
 }
-'@
-
-[System.IO.File]::WriteAllText($themePath, $json, [System.Text.UTF8Encoding]::new($false))
-Set-Content -Path $PROFILE -Value "oh-my-posh init pwsh --config '$themePath' | Invoke-Expression"
-. $PROFILE
